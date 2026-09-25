@@ -1,0 +1,42 @@
+@baseUrl = http://localhost:3001/api/v1
+@token = replace-me
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "dev@example.com",
+  "password": "replace-me"
+}
+
+### Criar receita
+POST {{baseUrl}}/incomes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "description": "Salário",
+  "amount": "3500.00",
+  "periodicity": "MONTHLY",
+  "valueType": "FIXED",
+  "competence": "2026-09"
+}
+
+### Criar despesa
+POST {{baseUrl}}/expenses
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "description": "Internet",
+  "amount": "119.90",
+  "classification": "ESSENTIAL",
+  "periodicity": "MONTHLY",
+  "valueType": "FIXED",
+  "competence": "2026-09"
+}
+
+### Resumo mensal
+GET {{baseUrl}}/analytics/monthly-summary?month=2026-09
+Authorization: Bearer {{token}}
